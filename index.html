@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>音乐播放器</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			text-align:center;
+			margin-top: 20px;
+		}
+		ul {
+			list-style-type:none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		li {
+			margin: 10px;
+			padding: 10px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		li:hover {
+			background-color: #eee;
+		}
+		audio {
+			width: 100%;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body bgcolor="＃00ffff">
+	<h1>本地音乐播放器</h1>
+	<ul id="music-list">
+		<li data-src="./music/music1.mp3" onclick="playMusic(this)">以爱之名</li>
+		<li data-src="./music/music2.mp3" onclick="playMusic(this)">Love Story</li>
+		<li data-src="./music/music3.mp3" onclick="playMusic(this)">达尔文</li>
+	</ul>
+	<audio id="audio-player" src=""></audio>
+	<script type="text/javascript">
+		function playMusic(elem) {
+			var audio = document.getElementById("audio-player");
+			audio.src = elem.dataset.src;
+			audio.play();
+			document.querySelectorAll("#music-list li").forEach(function(li) {
+				li.classList.remove("active");
+			});
+			elem.classList.add("active");
+		}
+	</script>
+</body>
+</html>
